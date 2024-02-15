@@ -1,5 +1,3 @@
-@CHARSET "UTF-8";
-
 * {
     margin: 0;
     padding: 0;
@@ -34,7 +32,6 @@ header {
     text-align: center;
     height: 60px;
     background-image: url("../bilder/bgImg.png");
-
     color: white;
 }
 

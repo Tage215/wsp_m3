@@ -2,58 +2,70 @@
 <html lang="sv">
 
 <head>
-   <meta charset="utf-8">
-   <title>Länka in sidor med PHP</title>
+   <meta charset="UTF-8">
+   <title>Länka in med PHP</title>
    <link href="css/styleSheet.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
    <div id="wrapper">
       <header>
-         <h1>Webbserverprogrammering 1 med Bygren</h1>
-      </header>
-      <!-- header -->
+         <?php include("inc/header.php"); ?>
+      </header><!-- header -->
 
       <section id="leftColumn">
          <nav>
-            <h1>Innehåll</h1>
-            <ul>
-               <li><a href="index.php">Hem</a></li>
-               <li><a href="pages/blogg.php">Blogg</a></li>
-               <li><a href="pages/bilder.php">Bilder</a></li>
-               <li><a href="pages/Kontakt.php">Kontakt</a></li>
-            </ul>
+            <?php include("inc/meny.php"); ?>
          </nav>
          <aside>
-            <h1>Namn</h1>
-            <p>
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-               Nulla tristique elementum nisl, et vehicula neque laoreet ut.
-               Praesent sed ultrices purus.
-            </p>
+            <?php include("inc/aside.php"); ?>
          </aside>
-      </section>
-      <!-- End leftColumn -->
+      </section><!-- End leftColumn -->
 
-      <main role="main">
+      <main>
          <section>
-            <hgroup>
-               <h1>Välkommen till Webbserverprogrammering 1</h1>
-               <h2>Moment 3</h2>
-            </hgroup>
+            <!-- Lägg in innehållet här -->
+            <?php
+            $page = "start";
+            if (isset($_GET['page']))
+               $page = $_GET['page'];
 
-            <p>Min sida</p>
+            switch ($page) {
+               case 'blogg':
+                  include('pages/blogg.php');
+                  break;
+               case 'bilder':
+                  include('pages/bilder.php');
+                  break;
+               case 'kontakt':
+                  include('pages/kontakt.php');
+                  break;
+
+               case 'logIn':
+                  include('pages/logIn.php');
+                  break;
+
+               case 'logOut':
+                  include('pages/logOut.php');
+                  break;
+
+               case 'klotter':
+                  include('pages/klotter.php');
+                  break;
+
+               default:
+                  include('pages/start.php');
+            }
+            ?>
+
          </section>
-      </main>
-      <!-- End main -->
+      </main><!-- End main -->
 
       <footer>
-         <span id="footerLeft">© Sidlayoutarna</span>
-         <span id="footerRight"><a href="mailto:xxx@doman">xxx@doman</a></span>
-      </footer>
-      <!-- End footer -->
-   </div>
-   <!-- End wrapper -->
+         <?php include('inc/footer.php'); 
+         include("inc/count.php"); ?>
+      </footer><!-- End footer -->
+   </div><!-- End wrapper -->
 </body>
 
 </html>
